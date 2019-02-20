@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const exec = require('child_process').exec;
 
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
 const CONFIG = require('./config.json');
 const ENV = getEnvironment();
 
@@ -59,6 +61,12 @@ module.exports = [
                     use: [
                         { loader: 'ts-loader' }
                     ]
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        { loader: 'css-loader', options: { modules: true, sourceMap: true } }
+                    ]
                 }
             ]
         },
@@ -93,6 +101,29 @@ module.exports = [
                     ]
                 },
                 {
+                    test: /\.css$/,
+                    include: [
+                        path.resolve(__dirname, 'src/client/global.css')
+                    ],
+                    use: ExtractTextWebpackPlugin.extract({
+                        use: [
+                            { loader: 'css-loader', options: { modules: false, sourceMap: true }}
+                        ]
+                    })
+                },
+                {
+                    test: /\.css$/,
+                    exclude: [
+                        /node_modules/,
+                        path.resolve(__dirname, 'src/client/global.css')
+                    ],
+                    use: ExtractTextWebpackPlugin.extract({
+                        use: [
+                            { loader: 'css-loader', options: { modules: true, sourceMap: true, localIdentName: '[local]_[hash:base64:5]' } }
+                        ]
+                    })
+                },
+                {
                     test: /\.html$/,
                     use: [
                         { loader: 'html-loader' }
@@ -101,6 +132,10 @@ module.exports = [
             ]
         },
         plugins: [
+            new ExtractTextWebpackPlugin({
+                filename: 'static/style.css',
+                ignoreOrder:  true
+            }),
             new webpack.DefinePlugin({
                 CONFIG: JSON.stringify({
                     ...(CONFIG._default || {}),

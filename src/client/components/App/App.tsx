@@ -1,7 +1,9 @@
 import React from 'react';
 
+import styles from './App.css';
+
 export const App = () => (
-    <div>Hello world!</div>
+    <div className={styles.container}>Hello world!</div>
 );
 
 export default App;
