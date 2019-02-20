@@ -57,12 +57,8 @@ module.exports = [
         },
         resolve: {
             alias: {
-                'server/controller': path.join(__dirname, './src/server/controller'),
-                'server/lib': path.join(__dirname, './src/server/lib'),
-                'server/middleware': path.join(__dirname, './src/server/middleware'),
-                'server/model': path.join(__dirname, './src/server/model'),
-                'server/route': path.join(__dirname, './src/server/route'),
-                'server/service': path.join(__dirname, './src/server/service')
+                'server': path.join(__dirname, './src/server'),
+                'client': path.join(__dirname, './src/client'),
             },
             extensions: [ '.ts', '.js', '.json' ]
         },
@@ -73,9 +69,15 @@ module.exports = [
             rules: [
                 {
                     test: /\.(ts|js)$/,
-                    exclude: [ /node_modules/, /\.spec.ts(x|)$/ ],
+                    exclude: [ /node_modules/, /\.spec.ts$/ ],
                     use: [
                         { loader: 'ts-loader' }
+                    ]
+                },
+                {
+                    test: /\.html$/,
+                    use: [
+                        { loader: 'html-loader' }
                     ]
                 }
             ]

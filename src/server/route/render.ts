@@ -3,12 +3,12 @@ import { APIRoute, Request, Response } from 'server/model/API';
 import { HTTPMethod } from 'server/model/HTTP';
 
 /* Application files */
-import { respondSuccess } from 'server/lib/http';
+import { renderToString } from 'server/service/render.ts';
 
 export default {
     method: HTTPMethod.GET,
-    url: '/status',
+    url: '/',
     controller: async (req: Request, res: Response) => {
-        return respondSuccess(res, { status: 'up' });
+        return res.send(renderToString());
     }
 } as APIRoute;

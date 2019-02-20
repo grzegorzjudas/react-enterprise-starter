@@ -22,12 +22,8 @@
         "noImplicitAny": false,
         "noUnusedLocals": true,
         "paths": {
-            "server/controller/*": [ "./src/server/controller/*" ],
-            "server/lib/*": [ "./src/server/lib/*" ],
-            "server/middleware/*": [ "./src/server/middleware/*" ],
-            "server/model/*": [ "./src/server/model/*" ],
-            "server/route/*": [ "./src/server/route/*" ],
-            "server/service/*": [ "./src/server/service/*" ]
+            "server/*": [ "./src/server/*" ],
+            "client/*": [ "./src/client/*" ]
         }
     },
     "exclude": [
