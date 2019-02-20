@@ -1,0 +1,14 @@
+{
+    "extends": [
+        "tslint-eslint-rules",
+        "tslint-config-standard"
+    ],
+    "rules": {
+        "array-bracket-spacing": [ true, "always" ],
+        "no-empty": [ false ],
+        "semicolon": [ true, "always" ],
+        "space-before-function-paren": [ true, "always" ],
+        "ter-indent": [ true, 4, { "SwitchCase": 1 } ],
+        "quotemark": [ true, "single" ]
+    }
+}

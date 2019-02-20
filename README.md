@@ -68,5 +68,14 @@ npm e2e
 ```
 These are separate for compatibility reasons (if you're running in environment not supporting Puppeteer, i.e. in some oldish corporate environment). Nothing prevents you from running both of them (even in parallel, using unix's "&" operator).
 
+#### Ok, my app is ready for release. What now?
+Then you most likely want to build it, package and deploy to some remote server.
+```
+npm build
+npm package
+```
+These two commands to exactly what they say they do. First one builds two bundles - one with server AND client logic, so you can server-side render it and send to user's browser already rendered. Second is client only, that will be injected to user's browser to make already render app "alive" (hydrate it).
+Second command gets the whole thing and puts into "tar.gz" package in the root project folder that you can then proceed to do whatever you want with.
+
 ### Troubleshooting
 Having some troubles setting up/running? Let me know, I'll be glad to help/fix/add a note here for other souls in need in the future.
