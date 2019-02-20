@@ -38,12 +38,30 @@ cleanWorkspace();
 module.exports = [
     {
         name: "client",
-        entry: path.resolve(__dirname, 'src/client/index.js'),
+        entry: path.resolve(__dirname, 'src/client/index.tsx'),
         mode: ENV,
         output: {
             path: path.resolve(__dirname, 'build/static/'),
             filename: 'app.js'
-        }
+        },
+        resolve: {
+            alias: {
+                'server': path.join(__dirname, './src/server'),
+                'client': path.join(__dirname, './src/client'),
+            },
+            extensions: [ '.ts', '.tsx', '.js' ]
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(ts|tsx|js)$/,
+                    exclude: [ /node_modules/, /\.spec.ts$/ ],
+                    use: [
+                        { loader: 'ts-loader' }
+                    ]
+                }
+            ]
+        },
     },
     {
         name: "server",
@@ -60,7 +78,7 @@ module.exports = [
                 'server': path.join(__dirname, './src/server'),
                 'client': path.join(__dirname, './src/client'),
             },
-            extensions: [ '.ts', '.js', '.json' ]
+            extensions: [ '.ts', '.tsx', '.js', '.json' ]
         },
         externals: switchEnvs({
             express: 'commonjs express'
@@ -68,7 +86,7 @@ module.exports = [
         module: {
             rules: [
                 {
-                    test: /\.(ts|js)$/,
+                    test: /\.(ts|tsx|js)$/,
                     exclude: [ /node_modules/, /\.spec.ts$/ ],
                     use: [
                         { loader: 'ts-loader' }

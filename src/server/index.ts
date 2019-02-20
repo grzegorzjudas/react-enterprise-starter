@@ -32,7 +32,7 @@ if (Config.STRICT_TLS === false) {
 const server = express();
 
 for (let middleware of middlewares) {
-    server.use(...middleware);
+    server.use(...middleware as any);
 }
 
 for (let route of routes) {
