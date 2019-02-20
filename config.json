@@ -1,0 +1,9 @@
+{
+    "_default": {
+        "APP_NAME": "react-enterprise-starter",
+        "NODE_ENV": "development",
+        "PORT": 8080,
+        "STRICT_TLS": false,
+        "LOG_LEVEL": "DEBUG"
+    }
+}

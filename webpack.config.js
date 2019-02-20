@@ -1,4 +1,19 @@
 const path = require('path');
+const webpack = require('webpack');
+const exec = require('child_process').exec;
+
+const CONFIG = require('./config.json');
+const ENV = getEnvironment();
+
+function printEnvironment (environment, colors) {
+    console.log([
+        colors ? '\x1b[34m' : '',
+        '===================================',
+        `Building for: ${environment}`,
+        '===================================',
+        colors ? '\x1b[0m' : ''
+    ].join('\n'));
+}
 
 function getEnvironment () {
     const options = [ 'development', 'production', 'none' ];
@@ -8,16 +23,23 @@ function getEnvironment () {
 }
 
 function switchEnvs (dev, prod) {
-    if (getEnvironment() === 'development') return dev;
+    if (ENV === 'development') return dev;
 
     return prod;
 }
+
+function cleanWorkspace () {
+    exec('rm -rf build/');
+}
+
+printEnvironment(ENV, ENV === 'development');
+cleanWorkspace();
 
 module.exports = [
     {
         name: "client",
         entry: path.resolve(__dirname, 'src/client/index.js'),
-        mode: getEnvironment(),
+        mode: ENV,
         output: {
             path: path.resolve(__dirname, 'build/static/'),
             filename: 'app.js'
@@ -26,7 +48,7 @@ module.exports = [
     {
         name: "server",
         entry: path.resolve(__dirname, 'src/server/index.ts'),
-        mode: getEnvironment(),
+        mode: ENV,
         target: 'node',
         devtool: switchEnvs('cheap-module-source-map'),
         output: {
@@ -57,6 +79,14 @@ module.exports = [
                     ]
                 }
             ]
-        }
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                CONFIG: JSON.stringify({
+                    ...(CONFIG._default || {}),
+                    ...(CONFIG[ENV] || {})
+                })
+            })
+        ]
     }
 ];

@@ -7,7 +7,7 @@ This is a starter project for enterprise-grade React applications. Feel free to 
 #### Ok, but what does it mean "enterprise"?
 It means that it's set up in specific way, so it's easy to use across multiple environments with different configurations, using tooling specific to full-fledged system based on React that needs to be running 24/7. In detail, it includes:
 * Server-side rendering based on a simple node.js server
-* Prepared to work with PM2 process manager
+* Prepared to work in Docker container
 * Working with different sets of configuration options depending on environment
 * Your configuration is also available to React, transparently and safely - so you can override some flags on the fly
 * Compression and minification of data
@@ -20,6 +20,7 @@ Well, regarding the technologies used, it's:
 * Webpack 4
 * CSS Modules
 * Linter
+* Nodemon for development
 Want to find out more? Have a look at the dependencies listed in *package.json* file.
 
 ### Usage
@@ -53,7 +54,7 @@ This will run the application the way it'll be ran in the target environment - b
 #### That's nice, but it's not really suited for development, is it?
 True. The code is minified, you don't get any sugar that helps with debugging. So if you're feeling like doing some coding, use this one instead:
 ```bash
-npm dev
+npm run dev
 ```
 It does more or less the same as the "start" command above, but gives you all the things necessary to develop (debug server, sourcemaps, file watching, etc).
 

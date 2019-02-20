@@ -2,9 +2,11 @@
 import { LogLevel } from 'server/model/Log';
 
 function getMostRelevantConfigProp (prop: string) {
-    if (typeof process.env[prop] !== 'undefined') return process.env[prop];
+    if (typeof process.env[prop] !== 'undefined') prop = process.env[prop];
+    else if (typeof CONFIG !== 'undefined') prop = CONFIG[prop];
+    else return null;
 
-    return null;
+    return prop;
 }
 
 function getConfigString (prop: string): string {

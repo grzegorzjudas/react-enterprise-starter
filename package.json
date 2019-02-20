@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack",
-        "start": "pm2 start ecosystem.config.js --no-daemon && pm2 kill",
-        "dev": "pm2 start ecosystem.config.js --no-daemon --watch",
+        "start": "npm run build && node build/server.js",
+        "dev": "nodemon -e ts,json --exec \"npm run start\"",
         "test": "test"
     },
     "repository": {
@@ -27,13 +27,13 @@
     "dependencies": {
         "compression": "^1.7.3",
         "express": "^4.16.4",
-        "joi": "^14.3.1",
-        "pm2": "^3.3.1"
+        "joi": "^14.3.1"
     },
     "devDependencies": {
         "@types/compression": "^0.0.36",
         "@types/express": "^4.16.1",
         "@types/joi": "^14.3.1",
+        "nodemon": "^1.18.10",
         "ts-loader": "^5.3.3",
         "tslint-config-standard": "^8.0.1",
         "tslint-eslint-rules": "^5.4.0",
