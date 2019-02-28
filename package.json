@@ -7,6 +7,7 @@
         "build": "webpack",
         "start": "npm run build && node build/server.js",
         "dev": "nodemon -e ts,tsx,json --exec \"npm run start\"",
+        "lint": "tslint --project tsconfig.json",
         "test": "test"
     },
     "repository": {
@@ -42,6 +43,7 @@
         "html-loader": "^0.5.5",
         "nodemon": "^1.18.10",
         "ts-loader": "^5.3.3",
+        "tslint": "^5.13.0",
         "tslint-config-standard": "^8.0.1",
         "tslint-eslint-rules": "^5.4.0",
         "typescript": "^3.3.3",

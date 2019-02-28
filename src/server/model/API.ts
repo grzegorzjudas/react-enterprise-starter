@@ -1,6 +1,6 @@
 /* Models */
 import { SchemaLike } from 'joi';
-import {RequestHandler, Request as ExpressRequest, Response as ExpressResponse } from 'express';
+import { RequestHandler, Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import { HTTPMethod } from './HTTP';
 
 export type APIRoute = {
