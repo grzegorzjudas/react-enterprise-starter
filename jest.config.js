@@ -1,25 +1,26 @@
-{
-    "moduleFileExtensions": [
+module.exports = {
+    moduleFileExtensions: [
         "js",
         "ts",
         "tsx"
     ],
-    "moduleNameMapper": {
+    moduleNameMapper: {
         "\\.css$": "<rootDir>/node_modules/identity-obj-proxy",
+        "^.+\\.html$": "<rootDir>/htmlMapper.js",
         "^client/(.*)$": "<rootDir>/src/client/$1",
         "^server/(.*)$": "<rootDir>/src/server/$1"
     },
-    "transform": {
+    transform: {
         "^.+\\.ts(x)?$": "ts-jest"
     },
-    "testMatch": [
-        "**/*.spec.+(ts|tsx)"
+    testMatch: [
+        "**/(*.|)spec.+(ts|tsx)"
     ],
-    "setupFilesAfterEnv": [
+    setupFilesAfterEnv: [
         "<rootDir>/testSetup.js"
     ],
-    "testEnvironment": "jsdom",
-    "moduleDirectories": [
+    testEnvironment: "jsdom",
+    moduleDirectories: [
         "<rootDir>/node_modules"
     ]
 }

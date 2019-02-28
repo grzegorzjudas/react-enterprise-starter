@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+
 import Component from './App';
 
 function renderShallow (props = {}) {

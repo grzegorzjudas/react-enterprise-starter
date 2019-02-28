@@ -8,7 +8,7 @@
         "start": "npm run build && node build/server.js",
         "dev": "nodemon -e ts,tsx,json --exec \"npm run start\"",
         "lint": "tslint --project tsconfig.json",
-        "test": "jest --config ./jest.config.json"
+        "test": "jest --config ./jest.config.js"
     },
     "repository": {
         "type": "git",
