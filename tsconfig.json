@@ -12,9 +12,6 @@
             "esnext",
             "dom"
         ],
-        "types": [
-            "node"
-        ],
         "allowJs": true,
         "strict": true,
         "strictNullChecks": false,
