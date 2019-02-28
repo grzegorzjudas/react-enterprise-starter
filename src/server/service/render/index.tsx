@@ -10,7 +10,7 @@ import App from 'client/components/App';
 import template from 'client/index.html';
 import 'client/global.css';
 
-function renderPartial (element: string, place: DocumentPlace, tpl: string) {
+export function renderPartial (element: string, place: DocumentPlace, tpl: string) {
     const match = place.split('|').slice(0, 2);
 
     return tpl.replace(match.join(''), `${match[0]}${element}${match[1]}`);

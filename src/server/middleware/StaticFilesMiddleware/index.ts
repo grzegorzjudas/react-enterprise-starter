@@ -5,5 +5,5 @@ import express from 'express';
 import Config from 'server/controller/Config';
 
 export default function () {
-    return [ '/static', express.static(`${Config.NODE_ENV === 'development' ? 'build/' : ''}static`) ];
+    return [ '/static', express.static(`${Config.NODE_ENV === 'development' ? 'build/' : ''}static/`) ];
 }

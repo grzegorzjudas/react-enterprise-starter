@@ -1,10 +1,13 @@
-import route from '.';
 import { HTTPMethod } from 'server/model/HTTP';
+
+import route from '.';
 import * as renderService from 'server/service/render';
 
-const renderServiceMock = jest.spyOn(renderService, 'renderToString').mockImplementation(() => 'rendered');
+jest.mock('server/service/render', () => ({
+    renderToString: jest.fn().mockReturnValue('rendered')
+}));
 
-describe('GET /', () => {
+describe('Endpoint GET /', () => {
     let req: any = jest.fn();
     let res: any = { send: jest.fn() };
     let next: any = jest.fn();
@@ -21,7 +24,7 @@ describe('GET /', () => {
     it('sends rendered content back', async () => {
         await route.controller(req, res, next);
 
-        expect(renderServiceMock).toBeCalledTimes(1);
+        expect(renderService.renderToString).toBeCalledTimes(1);
         expect(res.send).toBeCalledTimes(1);
         expect(res.send).toBeCalledWith('rendered');
     });

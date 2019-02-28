@@ -26,6 +26,7 @@
     },
     "homepage": "https://github.com/grzegorzjudas/react-enterprise-starter#readme",
     "dependencies": {
+        "body-parser": "^1.18.3",
         "compression": "^1.7.3",
         "express": "^4.16.4",
         "joi": "^14.3.1",
@@ -33,6 +34,7 @@
         "react-dom": "^16.8.2"
     },
     "devDependencies": {
+        "@types/body-parser": "^1.17.0",
         "@types/compression": "^0.0.36",
         "@types/enzyme": "^3.9.0",
         "@types/enzyme-adapter-react-16": "^1.0.5",
