@@ -23,6 +23,7 @@ Well, regarding the technologies used, it's:
 * CSS Modules
 * Linter
 * Nodemon for development
+
 Want to find out more? Have a look at the dependencies listed in *package.json* file.
 
 ### Usage

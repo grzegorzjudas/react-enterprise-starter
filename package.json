@@ -10,7 +10,7 @@
         "lint": "tslint --project tsconfig.json",
         "test": "npm run test:unit && npm run test:automated",
         "test:unit": "jest --config ./jest.config.js",
-        "test:automated": "jest -c jest-puppeteer.config.js"
+        "test:automated": "jest --config ./jest-puppeteer.config.js"
     },
     "repository": {
         "type": "git",
