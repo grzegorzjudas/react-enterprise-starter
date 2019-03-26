@@ -65,7 +65,8 @@ module.exports = [
                 {
                     test: /\.css$/,
                     use: [
-                        { loader: 'css-loader', options: { modules: true, sourceMap: true } }
+                        { loader: 'style-loader' },
+                        { loader: 'css-loader', options: { modules: true, importLoaders: 1, sourceMap: true } }
                     ]
                 }
             ]
@@ -119,7 +120,7 @@ module.exports = [
                     ],
                     use: ExtractTextWebpackPlugin.extract({
                         use: [
-                            { loader: 'css-loader', options: { modules: true, sourceMap: true, localIdentName: '[local]_[hash:base64:5]' } }
+                            { loader: 'css-loader', options: { modules: true, sourceMap: true } }
                         ]
                     })
                 },
