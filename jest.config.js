@@ -14,6 +14,7 @@ module.exports = {
         "^.+\\.ts(x)?$": "ts-jest"
     },
     testMatch: [
+        "**/__tests__/**/*.(ts|tsx)",
         "**/(*.|)spec.+(ts|tsx)"
     ],
     setupFilesAfterEnv: [

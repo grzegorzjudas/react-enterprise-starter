@@ -1,4 +1,4 @@
-import middlware from '.';
+import middlware from '../CrossOriginHeadersMiddleware';
 
 describe('CrossOriginHeadersMiddleware', () => {
     const req = {

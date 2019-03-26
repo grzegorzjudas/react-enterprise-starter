@@ -1,4 +1,4 @@
-import middlware from '.';
+import middlware from '../CompressionMiddleware';
 import compression from 'compression';
 
 jest.mock('compression');

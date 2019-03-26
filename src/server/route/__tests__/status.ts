@@ -1,6 +1,6 @@
 import { HTTPMethod } from 'server/model/HTTP';
 
-import route from '.';
+import route from '../status';
 import * as httpLib from 'server/lib/http';
 
 jest.mock('server/lib/http', () => ({

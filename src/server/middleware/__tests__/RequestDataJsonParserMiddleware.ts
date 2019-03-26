@@ -1,4 +1,4 @@
-import middlware from '.';
+import middlware from '../RequestDataJsonParserMiddleware';
 import bodyParser from 'body-parser';
 
 jest.mock('body-parser', () => ({

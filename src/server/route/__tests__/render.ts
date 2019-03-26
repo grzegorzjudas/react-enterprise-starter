@@ -1,6 +1,6 @@
 import { HTTPMethod } from 'server/model/HTTP';
 
-import route from '.';
+import route from '../render';
 import * as renderService from 'server/service/render';
 
 jest.mock('server/service/render', () => ({

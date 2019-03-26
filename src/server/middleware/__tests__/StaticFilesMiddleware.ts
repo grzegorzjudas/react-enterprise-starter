@@ -1,4 +1,4 @@
-import middlware from '.';
+import middlware from '../StaticFilesMiddleware';
 import express from 'express';
 
 import Config from 'server/controller/Config';
