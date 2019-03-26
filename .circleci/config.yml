@@ -21,8 +21,9 @@ jobs:
                 name: Unit tests
                 command: yarn test:unit
             - run:
-                name: Automated tests
-                command: yarn test:automated
-            - run:
                 name: Build
                 command: yarn build
+            # Disabled until the application gets deployed during pipeline
+            #- run:
+            #    name: Automated tests
+            #    command: yarn test:automated
