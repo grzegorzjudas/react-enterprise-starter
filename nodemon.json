@@ -1,6 +1,7 @@
 {
     "ignore": [
-        "build/"
+        "build/",
+        "bdd/"
     ],
     "watch": [
         "."
