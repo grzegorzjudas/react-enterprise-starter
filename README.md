@@ -1,3 +1,5 @@
+![](https://circleci.com/gh/grzegorzjudas/react-enterprise-starter.svg?style=shield&circle-token=a9dadb1ee032d563de95da043e65b3be69049463)
+
 # React Enterprise Starter
 React application ready to work in enterprise environment
 
