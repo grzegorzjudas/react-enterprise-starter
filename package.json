@@ -8,7 +8,9 @@
         "start": "npm run build && node build/server.js",
         "dev": "nodemon -e ts,tsx,json --exec \"npm run start\"",
         "lint": "tslint --project tsconfig.json",
-        "test": "jest --config ./jest.config.js"
+        "test": "npm run test:unit && npm run test:automated",
+        "test:unit": "jest --config ./jest.config.js",
+        "test:automated": "node ./bdd/index.js"
     },
     "repository": {
         "type": "git",
@@ -51,6 +53,7 @@
         "identity-obj-proxy": "^3.0.0",
         "jest": "^24.1.0",
         "nodemon": "^1.18.10",
+        "puppeteer": "^1.13.0",
         "style-loader": "^0.23.1",
         "ts-jest": "^24.0.0",
         "ts-loader": "^5.3.3",
