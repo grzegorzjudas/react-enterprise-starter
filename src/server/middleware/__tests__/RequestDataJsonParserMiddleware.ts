@@ -1,4 +1,4 @@
-import middlware from '../RequestDataJsonParserMiddleware';
+import middleware from '../RequestDataJsonParserMiddleware';
 import bodyParser from 'body-parser';
 
 jest.mock('body-parser', () => ({
@@ -11,7 +11,7 @@ describe('RequestDataJsonParserMiddleware', () => {
     });
 
     it('calls a compression library', () => {
-        const m = middlware();
+        const m = middleware();
 
         expect(bodyParser.json).toBeCalledTimes(1);
         expect(bodyParser.json).toBeCalledWith();

@@ -1,4 +1,4 @@
-import middlware from '../StaticFilesMiddleware';
+import middleware from '../StaticFilesMiddleware';
 import express from 'express';
 
 import Config from 'server/controller/Config';
@@ -17,7 +17,7 @@ describe('StaticFilesMiddleware', () => {
     });
 
     it('registers correct endpoint for hosting static files', () => {
-        const m = middlware();
+        const m = middleware();
 
         expect(express.static).toBeCalledTimes(1);
         expect(express.static).toBeCalledWith('build/static/');
@@ -29,7 +29,7 @@ describe('StaticFilesMiddleware', () => {
     it('hosts static files from different directory on non-development environment', () => {
         Config.NODE_ENV = 'production';
 
-        middlware();
+        middleware();
 
         expect(express.static).toBeCalledWith('static/');
     });

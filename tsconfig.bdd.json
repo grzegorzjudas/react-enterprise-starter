@@ -2,18 +2,17 @@
     "compilerOptions": {
         "rootDir": ".",
         "baseUrl": ".",
-        "outDir": "build",
+        "outDir": "./build",
         "module": "esnext",
         "moduleResolution": "node",
         "esModuleInterop": true,
         "target": "es5",
-        "jsx": "react",
         "sourceMap": true,
         "lib": [
             "esnext",
             "dom"
         ],
-        "allowJs": true,
+        "allowJs": false,
         "strict": true,
         "strictNullChecks": false,
         "forceConsistentCasingInFileNames": true,
@@ -22,15 +21,11 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noImplicitAny": false,
-        "noUnusedLocals": true,
-        "paths": {
-            "server/*": [ "./src/server/*" ],
-            "client/*": [ "./src/client/*" ]
-        }
+        "noUnusedLocals": true
     },
     "exclude": [
         "node_modules",
         "build",
-        "src/**/*.spec.*"
+        "src/**/*"
     ]
 }

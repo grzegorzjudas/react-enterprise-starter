@@ -1,4 +1,4 @@
-import middlware from '../CompressionMiddleware';
+import middleware from '../CompressionMiddleware';
 import compression from 'compression';
 
 jest.mock('compression');
@@ -9,7 +9,7 @@ describe('CompressionMiddleware', () => {
     });
 
     it('calls a compression library', () => {
-        const m = middlware();
+        const m = middleware();
 
         expect(compression).toBeCalledTimes(1);
         expect(compression).toBeCalledWith();

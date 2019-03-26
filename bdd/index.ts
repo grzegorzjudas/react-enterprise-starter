@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 
+/* tslint:disable-next-line no-floating-promises */
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

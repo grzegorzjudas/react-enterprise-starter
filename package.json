@@ -10,7 +10,7 @@
         "lint": "tslint --project tsconfig.json",
         "test": "npm run test:unit && npm run test:automated",
         "test:unit": "jest --config ./jest.config.js",
-        "test:automated": "node ./bdd/index.js"
+        "test:automated": "tsc -p tsconfig.bdd.json && node build/bdd"
     },
     "repository": {
         "type": "git",
@@ -43,6 +43,7 @@
         "@types/express": "^4.16.1",
         "@types/jest": "^24.0.9",
         "@types/joi": "^14.3.1",
+        "@types/puppeteer": "^1.12.3",
         "@types/react": "^16.8.4",
         "@types/react-dom": "^16.8.2",
         "css-loader": "^2.1.0",
