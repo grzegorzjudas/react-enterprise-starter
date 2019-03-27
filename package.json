@@ -6,7 +6,7 @@
     "scripts": {
         "build": "webpack",
         "start": "npm run build && node build/server.js",
-        "dev": "nodemon -e ts,tsx,json --exec \"npm run start\"",
+        "dev": "nodemon -e ts,tsx,json,css --exec \"npm run start\"",
         "lint": "tslint --project tsconfig.json",
         "test": "npm run test:unit && npm run test:automated",
         "test:unit": "jest --config ./jest.config.js",
