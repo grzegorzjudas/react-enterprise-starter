@@ -18,6 +18,6 @@ describe('App', () => {
     });
 
     it('renders correct content', () => {
-        expect(component.find('div').text()).toBe('Hello world!');
+        expect(component.find('h1').text()).toBe('Hello world!');
     });
 });
