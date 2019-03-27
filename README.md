@@ -6,6 +6,8 @@ React application ready to work in enterprise environment
 ### Description
 This is a starter project for enterprise-grade React applications. Feel free to use it.
 
+![](https://user-images.githubusercontent.com/3832059/55101982-b19ac380-50c5-11e9-9a53-8e1332f91f13.png)
+
 #### Ok, but what does it mean "enterprise"?
 It means that it's set up in specific way, so it's easy to use across multiple environments with different configurations, using tooling specific to full-fledged system based on React that needs to be running 24/7. In detail, it includes:
 * Server-side rendering based on a simple node.js server

@@ -34,7 +34,7 @@ function cleanWorkspace () {
     exec('rm -rf build/');
 }
 
-printEnvironment(ENV, ENV === 'development');
+printEnvironment(ENV, true);
 cleanWorkspace();
 
 module.exports = [
