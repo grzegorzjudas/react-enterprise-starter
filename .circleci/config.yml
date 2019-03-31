@@ -29,5 +29,8 @@ jobs:
                 name: Run docker container
                 command: docker container run -dit --name test --publish 8080:80 grzegorzjudas/react-enterprise-starter
             - run:
+                name: Wait for the application to start
+                command: wget --retry-connrefused --waitretry=3 -t 5 "http://127.0.0.1:8080" > /dev/null
+            - run:
                 name: Automated tests
                 command: yarn test:automated
