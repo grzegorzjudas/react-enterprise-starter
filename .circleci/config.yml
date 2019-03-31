@@ -22,8 +22,10 @@ jobs:
                 command: yarn test:unit
             - run:
                 name: Build
-                command: yarn build
-            # Disabled until the application gets deployed during pipeline
-            # - run:
-            # name: Automated tests
-            # command: yarn test:automated
+                command: yarn build && yarn package && yarn docker:build
+            - run:
+                name: Run docker container
+                command: docker container create -dit --name test --publish 80:80 grzegorzjudas/react-enterprise-starter
+            - run:
+                name: Automated tests
+                command: yarn test:automated
