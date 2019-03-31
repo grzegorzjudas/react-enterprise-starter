@@ -27,10 +27,13 @@ jobs:
                 command: yarn build && yarn package && yarn docker:build
             - run:
                 name: Run docker container
-                command: docker container run -dit --name test --publish 8080:80 grzegorzjudas/react-enterprise-starter
+                command: docker container run -dit --name test --publish 8080:80 grzegorzjudas/react-enterprise-starter && docker container logs test
             - run:
                 name: Wait for the application to start
-                command: wget --retry-connrefused --waitretry=3 -t 5 "http://127.0.0.1:8080" > /dev/null
+                command: wget --retry-connrefused --waitretry=3 -t 5 "http://$(hostname --ip-address):8080" > /dev/null
             - run:
                 name: Automated tests
                 command: yarn test:automated
+            - run:
+                name: Cleanup
+                command: docker container rm -f test
