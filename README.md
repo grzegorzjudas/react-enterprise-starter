@@ -15,19 +15,20 @@ It means that it's set up in specific way, so it's easy to use across multiple e
 
 <img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Docker image building<br />
 
-<img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Configuration suites different across your environments<br />
+<img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Configuration sets separate for all environments (.env based)<br />
 
-<img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Selected configuration options available to React<br />
+<img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Selected configuration options available to React (injected automatically and available for application only)<br />
 
 <img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Code compressed and minified to increase the performance to maximum<br />
 
+<img src="https://user-images.githubusercontent.com/3832059/55103352-8a91c100-50c8-11e9-9ecd-4b433921e6c7.png" width="15" height="15" />Material UI ready for use using CSS-in-JS approach (the one Material UI team uses themselves)
+
 #### Don't you have anything else?
 Well, regarding the technologies used, it's:
-* React 16
+* React 16.9
 * TypeScript 3 over ECMAScript 2018
 * Redux/Thunk
 * Webpack 4
-* CSS Modules
 * Linter
 * Nodemon for development
 
