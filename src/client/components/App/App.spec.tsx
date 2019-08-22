@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 
 import Component from './App';
+import { Card, Typography } from '@material-ui/core';
 
 function renderShallow (props = {}) {
     return shallow(<Component {...props} />);
@@ -14,10 +15,10 @@ describe('App', () => {
     beforeEach(() => component = renderShallow(props));
 
     it('renders correctly', () => {
-        expect(component.find('div').length).toBe(1);
+        expect(component.find(Card).length).toBe(1);
     });
 
     it('renders correct content', () => {
-        expect(component.find('h1').text()).toBe('Hello world!');
+        expect(component.find(Typography).at(0).text()).toBe('Hello world!');
     });
 });

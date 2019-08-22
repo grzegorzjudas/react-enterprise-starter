@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack",
-        "start": "node -r dotenv/config build/server.js",
+        "start": "node -r dotenv/config build/server.js dotenv_config_path=env-local.env",
         "dev": "nodemon -e ts,tsx,json,css --exec \"npm run build && npm run start\"",
         "lint": "tslint --project tsconfig.json",
         "test": "npm run test:unit && npm run test:automated",
