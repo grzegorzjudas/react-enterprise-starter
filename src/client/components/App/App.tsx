@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react';
-import { withStyles, CssBaseline } from '@material-ui/core';
+import { CssBaseline, Card, makeStyles, Typography } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 
 import Config from 'client/lib/config';
 import theme from 'client/lib/theme';
 
-const styles = {
-    '@global': {
-        body: {
-            backgroundColor: 'lightblue'
-        }
+const useStyles = makeStyles((theme) => ({
+    root: {
+        margin: '20px',
+        padding: '20px'
+    },
+    notice: {
+        backgroundColor: theme.palette.primary.main
     }
-};
+}));
 
-export const App = () => {
+export const App = (props) => {
+    const classes = useStyles(props);
+
     useEffect(() => {
         const styles = document.querySelector('#css-server-side');
 
@@ -24,11 +28,13 @@ export const App = () => {
         <>
             <CssBaseline />
             <ThemeProvider theme={theme}>
-                <h1>Hello world!</h1>
-                <h5>Environment: {Config.NODE_ENV}</h5>
+                <Card className={classes.root}>
+                    <Typography variant="h4">Hello world!</Typography>
+                    <Typography variant="subtitle1">You're using {Config.NODE_ENV} environement.</Typography>
+                </Card>
             </ThemeProvider>
         </>
     );
 };
 
-export default withStyles(styles)(App);
+export default App;

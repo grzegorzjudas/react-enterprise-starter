@@ -59,6 +59,10 @@
     src: url('/static/fonts/MaterialIcons.woff2') format('woff2');
 }
 
+html, body {
+    width: 100%;
+}
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
