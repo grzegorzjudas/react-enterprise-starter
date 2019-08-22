@@ -13,7 +13,7 @@ const styles = {
     }
 };
 
-export const App = ({ classes }) => {
+export const App = () => {
     useEffect(() => {
         const styles = document.querySelector('#css-server-side');
 

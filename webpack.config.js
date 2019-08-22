@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const exec = require('child_process').exec;
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const ENV = getEnvironment();
 
 function printEnvironment (environment, colors) {
@@ -98,6 +100,12 @@ module.exports = [
                     ]
                 }
             ]
-        }
+        },
+        plugins: [
+            new CopyWebpackPlugin([
+                { from: 'src/client/**/*.css', to: 'static/style.css' },
+                { from: 'src/client/assets', to: 'static' }
+            ])
+        ]
     }
 ];
