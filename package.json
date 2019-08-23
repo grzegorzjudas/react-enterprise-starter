@@ -11,6 +11,7 @@
         "test": "npm run test:unit && npm run test:automated",
         "test:unit": "jest --config ./jest.config.js",
         "test:automated": "jest --config ./jest-puppeteer.config.js",
+        "test:coverage": "jest --coverage",
         "package": "cd build && tar -zcvf artifact.tar.gz server.js static",
         "docker:build": "docker image build -t grzegorzjudas/react-enterprise-starter:latest ."
     },
