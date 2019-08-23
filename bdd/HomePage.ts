@@ -4,8 +4,8 @@ describe('Home page', () => {
     });
 
     it('should display "Hello world!" text', async () => {
-        const text = await page.evaluate(() => document.body.textContent);
+        const text = await page.$eval('h4', header => header.textContent);
 
-        expect(text).toContain('Hello world!');
+        expect(text).toEqual('Hello world!');
     });
 });

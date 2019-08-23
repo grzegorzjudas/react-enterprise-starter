@@ -1,24 +1,31 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
+import { createMuiTheme } from '@material-ui/core';
+import { createStore } from 'redux';
 
-import Component from './App';
-import { Card, Typography } from '@material-ui/core';
+import { App } from './App';
+import { HomePage } from '../../pages/HomePage';
 
-function renderShallow (props = {}) {
-    return shallow(<Component {...props} />);
+const defaultProps = {
+    store: createStore(() => ({
+        ui: {
+            text: 'test'
+        }
+    })),
+    theme: createMuiTheme()
+};
+
+function render (props = {}) {
+    return mount(<App {...defaultProps} {...props} />);
 }
 
 describe('App', () => {
-    let component: ShallowWrapper;
+    let component: ReactWrapper;
     let props = {};
 
-    beforeEach(() => component = renderShallow(props));
+    beforeEach(() => component = render(props));
 
-    it('renders correctly', () => {
-        expect(component.find(Card).length).toBe(1);
-    });
-
-    it('renders correct content', () => {
-        expect(component.find(Typography).at(0).text()).toBe('Hello world!');
+    it('renders home page', () => {
+        expect(component.find(HomePage).length).toBe(1);
     });
 });

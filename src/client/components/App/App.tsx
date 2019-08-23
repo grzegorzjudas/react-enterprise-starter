@@ -1,39 +1,39 @@
+/* Libraries */
 import React, { useEffect } from 'react';
-import { CssBaseline, Card, makeStyles, Typography } from '@material-ui/core';
+import { Store } from 'redux';
+import { Provider } from 'react-redux';
+import { CssBaseline, Theme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 
-import Config from 'client/lib/config';
-import theme from 'client/lib/theme';
+/* Application files */
+import { ReduxState } from 'client/types/Redux';
+import HomePage from 'client/pages/HomePage';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        margin: '20px',
-        padding: '20px'
-    },
-    notice: {
-        backgroundColor: theme.palette.primary.main
-    }
-}));
+function removeHeaderElement (selector: string) {
+    return () => {
+        const element = document.querySelector(selector);
 
-export const App = (props) => {
-    const classes = useStyles(props);
+        if (element) element.parentNode.removeChild(element);
+    };
+}
 
-    useEffect(() => {
-        const styles = document.querySelector('#css-server-side');
+type Props = {
+    store: Store<ReduxState>;
+    theme: Theme;
+};
 
-        if (styles) styles.parentNode.removeChild(styles);
-    });
+export const App = (props: Props) => {
+    useEffect(removeHeaderElement('#css-server-side'));
+    useEffect(removeHeaderElement('#config-server-side'));
+    useEffect(removeHeaderElement('#state-server-side'));
 
     return (
-        <>
+        <Provider store={props.store}>
             <CssBaseline />
-            <ThemeProvider theme={theme}>
-                <Card className={classes.root}>
-                    <Typography variant="h4">Hello world!</Typography>
-                    <Typography variant="subtitle1">You're using {Config.NODE_ENV} environement.</Typography>
-                </Card>
+            <ThemeProvider theme={props.theme}>
+                <HomePage />
             </ThemeProvider>
-        </>
+        </Provider>
     );
 };
 
