@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { CssBaseline, Theme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -31,7 +32,10 @@ export const App = (props: Props) => {
         <Provider store={props.store}>
             <CssBaseline />
             <ThemeProvider theme={props.theme}>
-                <HomePage />
+                <Switch>
+                    <Route path="/" component={HomePage} exact={true} />
+                    <Route render={() => <Redirect to="/" />} />
+                </Switch>
             </ThemeProvider>
         </Provider>
     );

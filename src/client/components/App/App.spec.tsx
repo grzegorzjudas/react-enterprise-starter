@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 
 import { App } from './App';
 import { HomePage } from '../../pages/HomePage';
+import { StaticRouter } from 'react-router';
 
 const defaultProps = {
     store: createStore(() => ({
@@ -16,7 +17,7 @@ const defaultProps = {
 };
 
 function render (props = {}) {
-    return mount(<App {...defaultProps} {...props} />);
+    return mount(<StaticRouter><App {...defaultProps} {...props} /></StaticRouter>);
 }
 
 describe('App', () => {

@@ -7,8 +7,8 @@ import { renderToString } from 'server/service/render';
 
 export default {
     method: HTTPMethod.GET,
-    url: '/',
+    url: '/*',
     controller: async (req: Request, res: Response) => {
-        return res.send(renderToString());
+        return res.send(renderToString(req.url));
     }
 } as APIRoute;

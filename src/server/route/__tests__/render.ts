@@ -17,7 +17,7 @@ describe('Endpoint GET /', () => {
     });
 
     it('listens on correct path using correct HTTP method', () => {
-        expect(route.url).toBe('/');
+        expect(route.url).toBe('/*');
         expect(route.method).toBe(HTTPMethod.GET);
     });
 

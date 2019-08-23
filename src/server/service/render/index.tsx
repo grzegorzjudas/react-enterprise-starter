@@ -2,6 +2,7 @@
 import React from 'react';
 import Renderer from 'react-dom/server';
 import { createStore } from 'redux';
+import { StaticRouter } from 'react-router';
 import { ServerStyleSheets } from '@material-ui/styles';
 
 /* Models */
@@ -29,7 +30,7 @@ export function renderPartial (element: string, place: DocumentPlace, tpl: strin
     return tpl.replace(match.join(''), `${match[0]}${element}${match[1]}`);
 }
 
-export function renderToString () {
+export function renderToString (url: string) {
     const sheets = new ServerStyleSheets();
     let app = template;
 
@@ -38,8 +39,14 @@ export function renderToString () {
         return cfg;
     }, {});
 
+    const RouteredApp = () => (
+        <StaticRouter location={url} context={{}}>
+            <App store={store} theme={theme} />
+        </StaticRouter>
+    );
+
     const store = createStore(reducers);
-    const html = Renderer.renderToString(sheets.collect(<App store={store} theme={theme} />));
+    const html = Renderer.renderToString(sheets.collect(<RouteredApp />));
     const css = sheets.toString();
 
     app = renderPartial('<script type="text/javascript" src="/static/app.js" defer></script>', DocumentPlace.HEAD, app);
