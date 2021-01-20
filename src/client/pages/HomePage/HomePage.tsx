@@ -27,7 +27,7 @@ export const HomePage = (props: Props) => {
     return (
         <Card className={classes.root}>
             <Typography variant="h4">{props.text}</Typography>
-            <Typography variant="subtitle1">You're using {Config.NODE_ENV} environement.</Typography>
+            <Typography variant="subtitle1">You are using {Config.NODE_ENV} environement.</Typography>
         </Card>
     );
 };

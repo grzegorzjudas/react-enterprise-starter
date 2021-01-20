@@ -14,9 +14,11 @@ function renderShallow (props = {}) {
 
 describe('HomePage', () => {
     let component: ShallowWrapper;
-    let props = {};
+    const props = {};
 
-    beforeEach(() => component = renderShallow(props));
+    beforeEach(() => {
+        component = renderShallow(props);
+    });
 
     it('renders correctly', () => {
         expect(component.find(Card).length).toBe(1);

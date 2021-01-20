@@ -22,9 +22,11 @@ function render (props = {}) {
 
 describe('App', () => {
     let component: ReactWrapper;
-    let props = {};
+    const props = {};
 
-    beforeEach(() => component = render(props));
+    beforeEach(() => {
+        component = render(props);
+    });
 
     it('renders home page', () => {
         expect(component.find(HomePage).length).toBe(1);

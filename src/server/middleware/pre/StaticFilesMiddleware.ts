@@ -2,8 +2,8 @@
 import express from 'express';
 
 /* Application files */
-import Config from 'server/controller/Config';
+import Config from 'server/lib/config';
 
-export default function () {
+export default function StaticFilesMiddleware () {
     return [ '/static', express.static(`${Config.NODE_ENV === 'development' ? 'build/' : ''}static/`) ];
 }

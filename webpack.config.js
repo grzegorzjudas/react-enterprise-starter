@@ -102,10 +102,12 @@ module.exports = [
             ]
         },
         plugins: [
-            new CopyWebpackPlugin([
-                { from: 'src/client/**/*.css', to: 'static/style.css' },
-                { from: 'src/client/assets', to: 'static' }
-            ])
+            new CopyWebpackPlugin({
+                patterns: [
+                    { from: 'src/client/**/*.css', to: 'static/style.css' },
+                    { from: 'src/client/assets', to: 'static' }
+                ]
+            })
         ]
     }
 ];

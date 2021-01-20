@@ -1,5 +1,7 @@
-import { HTTPMethod } from 'server/model/HTTP';
+/* Libraries */
+import { HTTPMethod } from 'server/type/HTTP';
 
+/* Application files */
 import route from '../status';
 import * as httpLib from 'server/lib/http';
 
@@ -8,9 +10,9 @@ jest.mock('server/lib/http', () => ({
 }));
 
 describe('Endpoint GET /status', () => {
-    let req: any = {};
-    let res: any = {};
-    let next: any = jest.fn();
+    const req: any = {};
+    const res: any = {};
+    const next: any = jest.fn();
 
     beforeEach(() => {
         jest.clearAllMocks();

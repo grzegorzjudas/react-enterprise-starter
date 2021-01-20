@@ -22,6 +22,6 @@ module.exports = {
     ],
     testEnvironment: 'jsdom',
     moduleDirectories: [
-        '<rootDir>/node_modules'
+        'node_modules'
     ]
 }

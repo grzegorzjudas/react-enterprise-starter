@@ -5,12 +5,13 @@ import { createStore } from 'redux';
 import { StaticRouter } from 'react-router';
 import { ServerStyleSheets } from '@material-ui/styles';
 
-/* Models */
-import { DocumentPlace } from 'server/model/Render';
-import { AnyObject } from 'server/model/Object';
+/* Types */
+import { DocumentPlace } from 'server/type/Render';
+import { AnyObject } from 'server/type/Object';
 
 /* Application files */
-import Config from 'server/controller/Config';
+import Config from 'server/lib/config';
+
 import App from 'client/components/App';
 import theme from 'client/lib/theme';
 import reducers from 'client/reducers';

@@ -1,7 +1,7 @@
 export class Process {
     private process: NodeJS.Process;
-    private eventsException: Function[] = [];
-    private eventsStop: Function[] = [];
+    private eventsException: ((e: Error) => void)[] = [];
+    private eventsStop: (() => void)[] = [];
 
     constructor (process: NodeJS.Process) {
         this.process = process;
@@ -19,22 +19,22 @@ export class Process {
         });
     }
 
-    public onException (callback: Function): Function {
+    public onException (callback: (e: Error) => void) {
         this.eventsException.push(callback);
 
         const index = this.eventsException.length - 1;
 
-        return () => {
+        return (): void => {
             this.eventsException.splice(index, 1);
         };
     }
 
-    public onStop (callback: Function): Function {
+    public onStop (callback: () => void) {
         this.eventsStop.push(callback);
 
         const index = this.eventsStop.length - 1;
 
-        return () => {
+        return (): void => {
             this.eventsStop.splice(index, 1);
         };
     }

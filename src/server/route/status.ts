@@ -1,6 +1,7 @@
-/* Models */
-import { APIRoute, Request, Response } from 'server/model/API';
-import { HTTPMethod } from 'server/model/HTTP';
+/* Types */
+import { Request, Response } from 'express';
+import { APIRoute } from 'server/type/API';
+import { HTTPMethod } from 'server/type/HTTP';
 
 /* Application files */
 import { respondSuccess } from 'server/lib/http';

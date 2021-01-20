@@ -1,5 +1,7 @@
-import { HTTPMethod } from 'server/model/HTTP';
+/* Types */
+import { HTTPMethod } from 'server/type/HTTP';
 
+/* Application files */
 import route from '../render';
 import * as renderService from 'server/service/render';
 
@@ -8,9 +10,9 @@ jest.mock('server/service/render', () => ({
 }));
 
 describe('Endpoint GET /', () => {
-    let req: any = jest.fn();
-    let res: any = { send: jest.fn() };
-    let next: any = jest.fn();
+    const req: any = jest.fn();
+    const res: any = { send: jest.fn() };
+    const next: any = jest.fn();
 
     beforeEach(() => {
         jest.clearAllMocks();

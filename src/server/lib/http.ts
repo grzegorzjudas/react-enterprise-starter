@@ -1,14 +1,14 @@
 /* Libraries */
-import joi, { SchemaLike } from 'joi';
+import HTTPCode from 'http-status-codes';
 
-/* Models */
-import { HTTPCode } from 'server/model/HTTP';
-import { AnyObject } from 'server/model/Object';
+/* Types */
+import { AnySchema } from 'joi';
+import { AnyObject } from 'server/type/Object';
 
 /* Application files */
-import APIError from 'server/controller/APIError';
+import APIError from 'server/lib/error';
 
-export function respondSuccess (res, data: any = null, status: HTTPCode = HTTPCode.OK) {
+export function respondSuccess (res, data: any = null, status: number = HTTPCode.OK) {
     res.set('Content-Type', 'application/json');
 
     res.status(status);
@@ -33,25 +33,29 @@ export function getRequestOriginIP (req): string {
     return req.connection.remoteAddress || req.socket.remoteAddress || null;
 }
 
-export function validateRequestPayload (body: any, schema: SchemaLike): Promise<any> {
+export async function validateRequestPayload (body: any, schema: AnySchema): Promise<any> {
     const buildPath = (path: string[]) => {
         return path.reduce((p, n) => {
-            return typeof n === 'string' ? p += `.${n}` : p += `[${n}]`;
+            p = typeof n === 'string' ? p += `.${n}` : p += `[${n}]`;
+
+            return p;
         }, '').slice(1);
     };
 
-    return new Promise((resolve, reject) => {
-        joi.validate(body, schema, {
+    try {
+        const value = await schema.validateAsync(body, {
             convert: true,
             stripUnknown: true
-        }, (error, data) => {
-            if (error) {
-                const msg = `Request validation failed: ${error.details[0].message} (${buildPath(error.details[0].path)})`;
-
-                return reject(new APIError(msg, HTTPCode.BAD_REQUEST));
-            }
-
-            return resolve(data);
         });
-    });
+
+        return value;
+    } catch (err) {
+        const message = `Request validation failed: ${err.details[0].message} (${buildPath(err.details[0].path)})`;
+
+        throw new APIError({
+            id: 'PAYLOAD_VALIDATION_FAILED',
+            message,
+            code: HTTPCode.BAD_REQUEST
+        });
+    }
 }

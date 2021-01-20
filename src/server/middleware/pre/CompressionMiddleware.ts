@@ -1,5 +1,6 @@
+/* Libraries */
 import compression from 'compression';
 
-export default function () {
+export default function CompressionMiddleware () {
     return [ compression() ];
 }
